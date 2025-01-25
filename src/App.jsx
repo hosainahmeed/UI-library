@@ -10,6 +10,10 @@ import DynamicForm from "./UI Components/Form/Advance Form/DynamicForm/DynamicFo
 import ButtonGroup from "./UI Components/Button/ButtonGroup/ButtonGroup";
 import Login from "./UI Components/AuthForms/LoginForms/Login";
 import Register from "./UI Components/AuthForms/RegisterForms/Register";
+import DynamicTabs from "./UI Components/Dynamic Tabs/DynamicTabs";
+import AvatarUploader from "./UI Components/AvatarUploader/AvatarUploader";
+import ProgressTracker from "./UI Components/ProgressTracker/ProgressTracker";
+import SearchBar from "./UI Components/SearchBar/SearchBar";
 
 const App = () => {
   const handleSubmit = (values) => {
@@ -19,6 +23,27 @@ const App = () => {
   return (
     <div className="min-h-screen flex items-center justify-center bg-gray-100">
       <div className="bg-white p-8 rounded-md shadow-md w-full max-w-lg">
+        <SearchBar onSearch={(value) => console.log('Search Value:', value)} />
+
+        <ProgressTracker
+          current={1}
+          steps={[
+            { title: "Step 1", description: "First step description" },
+            { title: "Step 2", description: "Second step description" },
+            { title: "Step 3", description: "Final step description" },
+          ]}
+        />
+
+        <DynamicTabs
+          initialTabs={[
+            { key: "1", label: "Tab 1", content: "Content of Tab 1" },
+            { key: "2", label: "Tab 2", content: "Content of Tab 2" },
+          ]}
+        />
+        <AvatarUploader
+          onUpload={(file) => console.log("Uploaded File:", file)}
+        />
+
         <h2 className="text-xl font-semibold mb-4">Sign Up Form</h2>
         <Register />
         <Login />
